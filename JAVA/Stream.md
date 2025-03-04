@@ -88,3 +88,73 @@ CPU를 최대한으로 활용하기 위해 **요소를 분배해 병렬 작업�
    parallelStream.forEach(ParellelExample :: print);
    ```
    > 출력값의 경우, ForkJoinPool(스레드풀)의 작업 스레드들이 병렬적으로 요소를 처리하므로 main 스레드를 포함해 출력된다.
+
+- **중간 처리**와 **최종 처리**가 가능함   
+  스트림은 컬렉션의 요소에 중간 처리와 최종 처리가 가능하다.   
+  중간 처리는 매핑, 필터링, 정렬 / 최종 처리는 반복, 카운팅, 평균, 총합 등 집계 처리가 가능하다.   
+  [컬렉션 혹은 배열] > [오리지날 스트림] > [중간 스트림(중간처리 결과)] > [집계 처리 결과물(최종처리 결과)]
+<br>
+<br>
+
+## 스트림의 종류
+java.util.stream 패키지에는 스트림 API들이 있는데, BaseStream 인터페이스를 부모로 한 자식 인터페이스들이 상속 관계를
+이루고 있다. BaseStream 인터페이스는 공통 메소드들이 정의되어 있을 뿐 코드에 직접적으로 사용되지 않는다.
+
+<table width = 100%>
+  <tr>
+    <td><strong>리턴 타입</strong></td>
+    <td><strong>메소드(매개변수)</strong></td>
+    <td><strong>소스</strong></td>
+  </tr>
+  <tr>
+    <td>Stream</td>
+    <td>java.util.Collection.stream()<br>
+        java.util.Collection.parallelStream()</td>
+    <td>Collection</td>
+  </tr>
+  <tr>
+    <td>Stream<br>
+        intStream<br>
+        LongStream<br>
+        DoubleStream</td>
+    <td>Arrays.stream(T[] or int[] or long[] or double[])<br>
+        Stream.of(T[])<br> 
+        IntStream.of(int[])<br>
+        LongStream.of(long[])<br> 
+        DoubleStream.of(double[])</td>
+    <td>Array</td>
+  </tr>
+  <tr>
+    <td>IntStream</td>
+    <td>IntStream.range(int, int)<br>
+        IntStream.rangeClosed(int, int)</td>
+    <td>int range</td>
+  </tr>
+  <tr>
+    <td>LongStream</td>
+    <td>LongStream.range(long, long)<br>
+        LongStream.rangeClosed(long, long)</td>
+    <td>long range</td>
+  </tr>
+  <tr>
+    <td>Stream(Path)</td>
+    <td>Files.find(Path, int, BiPredicate, FileVisitOption)<br>
+        Files.list(Path)</td>
+    <td>directory</td>
+  </tr>
+  <tr>
+    <td>Stream(String)</td>
+    <td>Files.lines(Path, Charset)<br>
+        BufferedReader.lines()</td>
+    <td>file</td>
+  </tr>
+  <tr>
+    <td>DoubleStream<br>
+        IntStream<br>
+        LongStream</td>
+    <td>Random.doubles(...)<br>
+        Random.ints()<br>
+        Random.longs()</td>
+    <td>Random number</td>
+  </tr>
+</table>

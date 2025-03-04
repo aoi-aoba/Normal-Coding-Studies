@@ -158,3 +158,21 @@ java.util.stream 패키지에는 스트림 API들이 있는데, BaseStream 인�
     <td>Random number</td>
   </tr>
 </table>
+
+```JAVA
+List<class> list;
+Stream<class> stream = list.stream(); // get Stream from Collection
+Stream<Type> stream = Arrays.stream(TypeArray); // get Stream from Array
+IntStream stream = IntStream.rangeClosed(1, 100);
+// TypeStream stream = TypeStream.rangeClosed(parameter from, parameter  to);
+// get Stream from range (from, to)
+Path path = Paths.get("SRCPATH");
+stream = Files.lines(path, Charset.defaultCharset()); // get Stream from File
+Stream<Path> stream = Files.list(path); // get Stream from Directory
+```
+
+forEach로 받아올 경우, parameter p는
+- class나 type의 경우 배열 혹은 컬렉션의 요소를 받아오게 된다.
+- rangeClosed의 경우에도 각각의 매개값을 받아오게 되는데, 두 번째 매개값을 포함하는 것이 rangeClosed, range는 포함하지 않는다.
+- Files.lines 메소드를 통해 운영체제 기본 문자셋을 받아왔기 때문에 각 파일의 줄을 받아온다.
+- path directory에서 서브 디렉토리 또는 파일에 해당하는 path 객체를 받아온다.

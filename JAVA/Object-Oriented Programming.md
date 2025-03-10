@@ -1,4 +1,4 @@
-# 객체와 클래스
+# 자바의 특징, 객체 지향 프로그래밍
 
 ## 객체 지향 프로그래밍(OOP: Object Oriented Programming)
 

@@ -165,3 +165,6 @@ isEmpty():
 clear():
     numItems <- 0
 ```
+
+## 구현
+JAVA를 활용해 구현한 코드는 Normal-Coding-Studies/Data-Structure-With-JAVA/Data-Structure/out/production/Data-Structure/list 내에 있다.

@@ -3,6 +3,8 @@ package list;
 public class Main {
     public static void main(String[] args) {
        IntegerArrayList integerArrayList = new IntegerArrayList();
+       ArrayList<String> arrayList = new ArrayList<>();
+
        integerArrayList.add(0, 300);
        integerArrayList.add(0, 200);
        integerArrayList.add(0, 100);
@@ -21,5 +23,24 @@ public class Main {
        integerArrayList.print();
        integerArrayList.clear();
        integerArrayList.print();
+
+       arrayList.add(0, "test");
+       arrayList.add(0, "sample");
+       arrayList.add(0, "String");
+       arrayList.print();
+       arrayList.append("test2");
+       arrayList.print();
+       arrayList.remove(3);
+       arrayList.print();
+       arrayList.add(3, "added-at-3");
+       arrayList.add(1, "added-at-1");
+       arrayList.add(0, "added-at-0");
+       arrayList.print();
+       arrayList.append("appended");
+       arrayList.print();
+       arrayList.remove(1);
+       arrayList.print();
+       arrayList.removeItem("added-at-3");
+       arrayList.print();
     }
 }

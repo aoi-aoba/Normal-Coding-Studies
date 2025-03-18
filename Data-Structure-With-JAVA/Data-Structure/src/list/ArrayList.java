@@ -46,7 +46,6 @@ public class ArrayList<E> implements ListInterface<E> {
             for (int i = index; i <= numItems - 2; i++)
                 item[i] = item[i+1];
             numItems--;
-            System.out.println("removed value " + removeResult + " from list");
             return removeResult;
         }
     }

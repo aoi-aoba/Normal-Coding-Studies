@@ -14,4 +14,8 @@ public interface ListInterface<E> {
     public void print();
 }
 
-/* 제네릭 버전으로 구현하기 위한 인터페이스 */
+/*
+    제네릭 버전으로 구현하기 위한 인터페이스
+    - 배열 리스트인 ArrayList (정수 한정 배열 리스트에는 사용하지 않음)
+    - 연결 리스트인 LinkedList
+*/

@@ -1,9 +1,11 @@
 package list;
 
 public class Main {
+   // 테스트케이스 작성
     public static void main(String[] args) {
        IntegerArrayList integerArrayList = new IntegerArrayList();
        ArrayList<String> arrayList = new ArrayList<>();
+       LinkedList<Integer> linkedList = new LinkedList<>();
 
        integerArrayList.add(0, 300);
        integerArrayList.add(0, 200);
@@ -42,5 +44,25 @@ public class Main {
        arrayList.print();
        arrayList.removeItem("added-at-3");
        arrayList.print();
+
+       System.out.println(); // 구분을 위해
+       linkedList.add(0, 300);
+       linkedList.add(0, 300);
+       linkedList.add(0, 300);
+       linkedList.print();
+       linkedList.append(500);
+       linkedList.append(600);
+       linkedList.print();
+       linkedList.remove(3);
+       linkedList.print();
+       linkedList.add(3, 250);
+       linkedList.add(1, 50);
+       linkedList.add(0, 10);
+       linkedList.print();
+       linkedList.append(700);
+       linkedList.print();
+       linkedList.remove(1);
+       linkedList.removeItem(600);
+       linkedList.print();
     }
 }

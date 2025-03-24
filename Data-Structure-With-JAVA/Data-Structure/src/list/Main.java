@@ -6,6 +6,7 @@ public class Main {
        IntegerArrayList integerArrayList = new IntegerArrayList();
        ArrayList<String> arrayList = new ArrayList<>();
        LinkedList<Integer> linkedList = new LinkedList<>();
+       CircularLinkedList<Integer> circularLinkedList = new CircularLinkedList<>();
 
        integerArrayList.add(0, 300);
        integerArrayList.add(0, 200);
@@ -64,5 +65,25 @@ public class Main {
        linkedList.remove(1);
        linkedList.removeItem(600);
        linkedList.print();
+
+       System.out.println(); // 구분을 위해
+       circularLinkedList.add(0, 300);
+       circularLinkedList.add(0, 200);
+       circularLinkedList.add(0, 100);
+       circularLinkedList.print();
+       circularLinkedList.append(500);
+       circularLinkedList.append(600);
+       circularLinkedList.print();
+       circularLinkedList.remove(3);
+       circularLinkedList.print();
+       circularLinkedList.add(3, 250);
+       circularLinkedList.add(1, 50);
+       circularLinkedList.add(0, 10);
+       circularLinkedList.print();
+       circularLinkedList.append(700);
+       circularLinkedList.print();
+       circularLinkedList.remove(1);
+       circularLinkedList.removeItem(600);
+       circularLinkedList.print();
     }
 }

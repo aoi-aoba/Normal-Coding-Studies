@@ -17,5 +17,11 @@ public class Main {
         linkedStack.push("test 2");
         linkedStack.push("test 3");
         linkedStack.pop();
+
+        InheritedStack<String> inheritedStack = new InheritedStack<>();
+        inheritedStack.push("test 1");
+        inheritedStack.push("test 2");
+        inheritedStack.push("test 3");
+        inheritedStack.pop();
     }
 }

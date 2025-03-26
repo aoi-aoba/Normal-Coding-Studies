@@ -11,5 +11,11 @@ public class Main {
         arrayStack.print();
         arrayStack.pop();
         arrayStack.print();
+
+        LinkedStack<String> linkedStack = new LinkedStack<>();
+        linkedStack.push("test 1");
+        linkedStack.push("test 2");
+        linkedStack.push("test 3");
+        linkedStack.pop();
     }
 }

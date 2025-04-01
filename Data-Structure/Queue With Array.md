@@ -21,7 +21,7 @@
     - `dequeueAll()` : 큐를 비운다.
 
 ## 배열 큐의 작업 : (1) 큐 초기화
-![img.png](ArrayQueueExampleCircle1.png)
+![img.png](picture reference/ArrayQueueExampleCircle1.png)
 
 일반적으로 빈 큐를 표현할 때는 배열을 원형으로 해석하는 것이 편하다.   
 큐를 위한 배열을 할당받아서 `numItems`로 원소 개수를 체크하는 것도 동일하고, 삽입과 삭제 구조도 동일하다.   
@@ -40,7 +40,7 @@ numItems <- 0
 큐의 원소를 삽입할 때는 **tail 값을 1 증가시키고** 그 자리에 새 원소를 저장하면 된다.   
 여기에서 주의할 점은, 원소를 삽입했을 때 배열의 크기를 넘을 경우를 가정해야 한다.
 
-![img.png](ArrayQueueExampleCircle2.png)
+![img.png](picture reference/ArrayQueueExampleCircle2.png)
 
 우리는 배열의 경계를 삽입 후에 넘어가게 되면 queue.length-1 다음에 0으로 넘어가기로 했다.   
 그러므로, `tail++` 대신에 `tail <- (tail+1)%queue.length`를 사용하면 된다.   
@@ -66,7 +66,7 @@ isFull():
 ```
 
 ## 배열 큐의 작업 : (3) 원소 삭제
-![img.png](ArrayQueueExampleCircle3.png)
+![img.png](picture reference/ArrayQueueExampleCircle3.png)
 
 큐의 원소를 삭제하는 것은 가장 먼저 들어온 원소를 기준으로 한다고 했다.    
 그러므로 **front의 원소를 삭제(리턴)하고** front를 1 증가시킨다.   

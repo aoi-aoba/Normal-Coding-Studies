@@ -10,6 +10,17 @@ public class Main {
         System.out.println(arrayQueue.front());
         System.out.println(arrayQueue.isEmpty());
         System.out.println(arrayQueue.isFull());
+        System.out.println();
+
+        LinkedQueue<String> linkedQueue = new LinkedQueue<>();
+        linkedQueue.enqueue("Joe");
+        linkedQueue.enqueue("John");
+        linkedQueue.enqueue("Colin");
+        linkedQueue.dequeue();
+        System.out.println(linkedQueue.front());
+        System.out.println(linkedQueue.isEmpty());
+        System.out.println();
+
     }
 }
 

@@ -21,6 +21,14 @@ public class Main {
         System.out.println(linkedQueue.isEmpty());
         System.out.println();
 
+        ListQueue<String> listQueue = new ListQueue<>();
+        listQueue.enqueue("Joe");
+        listQueue.enqueue("John");
+        listQueue.enqueue("Colin");
+        listQueue.dequeue();
+        System.out.println(listQueue.front());
+        System.out.println(listQueue.isEmpty());
+        System.out.println();
     }
 }
 

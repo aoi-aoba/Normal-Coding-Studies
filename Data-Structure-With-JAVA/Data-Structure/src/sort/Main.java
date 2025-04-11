@@ -2,21 +2,29 @@ package sort;
 
 public class Main {
     static final int NUM_SCALE = 100;
-    static final int SIZE = 10;
+    static final int SIZE = 10000;
+
     public static void prepare(int[] arr) {
         for (int i = 0; i < arr.length; i++)
             arr[i] = (int) (NUM_SCALE * Math.random());
     }
+
     public static void main(String[] args) {
-        int[] arr= new int[SIZE];
-        prepare(arr);
+        int[] baseTestCaseArray = new int[SIZE];
+        prepare(baseTestCaseArray);
 
-        Sort sort = new Sort(arr);
-        // sort.selectionSort();
-        // sort.bubbleSort();
-        sort.insertionSort();
+        SortExecutor executor = new SortExecutor(baseTestCaseArray);
 
-        arr = sort.getArray();
-        for(int i : arr) System.out.print(i + " ");
+        executor.addGeneralSort("Selection");
+        //executor.addGeneralSort("Bubble");
+        executor.addGeneralSort("Insertion");
+
+        executor.addMergeSort("Default", false);
+        executor.addMergeSort("Bottom-Up", false);
+        executor.addMergeSort("Hybrid", false);
+        executor.addMergeSort("Smart Buffer Reuse", false);
+        executor.addMergeSort("Multi-Thread", false);
+
+        executor.runAll();
     }
 }

@@ -27,6 +27,7 @@ public class Main {
         executor.addMergeSort("Multi-Thread", false);
 
         executor.addAdvancedSort("Quick", false);
+        executor.addAdvancedSort("Heap", false);
 
         executor.runAll();
     }

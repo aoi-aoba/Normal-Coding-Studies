@@ -29,6 +29,7 @@ public class AdvancedSort {
 
         switch (type) {
             case "Quick" -> quickSort();
+            case "Heap" -> heapSort();
         }
 
         long endTime = System.currentTimeMillis();
@@ -49,14 +50,14 @@ public class AdvancedSort {
     }
 
     private void quickSort() {
-        qSort(0, Array.length-1);
+        qSort(0, Array.length - 1);
     }
 
     private void qSort(int p, int r) {
         if (p < r) {
             int q = partition(p, r);
-            qSort(p, q-1);
-            qSort(q+1, r);
+            qSort(p, q - 1);
+            qSort(q + 1, r);
         }
     }
 
@@ -67,14 +68,40 @@ public class AdvancedSort {
     }
 
     private int partition(int p, int r) {
-        int x = Array[r], i = p-1, tmp;
-        for (int j = p; j <= r-1; j++) {
+        int x = Array[r], i = p - 1, tmp;
+        for (int j = p; j <= r - 1; j++) {
             if (Array[j] < x) {
                 i++;
                 swap(i, j);
             }
         }
-        swap(i+1, r);
-        return i+1;
+        swap(i + 1, r);
+        return i + 1;
+    }
+
+    private void heapSort() {
+        buildHeap();
+        for (int i = Array.length - 1; i >= 1; i--) {
+            swap(0, i);
+            percolateDown(0, i - 1);
+        }
+    }
+
+    private void buildHeap() {
+        if (Array.length >= 2)
+            for (int i = (Array.length - 2) / 2; i >= 0; i--)
+                percolateDown(i, Array.length - 1);
+    }
+
+    private void percolateDown(int i, int n) {
+        int child = 2 * i + 1;
+        int rightChild = 2 * i + 2;
+        if (child <= n) {
+            if ((rightChild <= n) && Array[child] < Array[rightChild]) child = rightChild;
+            if (Array[i] < Array[child]) {
+                swap(i, child);
+                percolateDown(child, n);
+            }
+        }
     }
 }

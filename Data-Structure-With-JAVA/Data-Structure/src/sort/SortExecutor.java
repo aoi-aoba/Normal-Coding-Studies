@@ -17,11 +17,17 @@ public class SortExecutor {
     }
 
     // GeneralSort 인스턴스 생성, 지정 타입으로 정렬 후 리포트 출력
-    public void addGeneralSort(String type) {
+    public void addGeneralSort(String type, boolean printSortedArray) {
         tasks.add(() -> {
             GeneralSort sorter = new GeneralSort(copyArray());
             sorter.sort(type);
             System.out.println(sorter.getReport());
+            if (printSortedArray) {
+                int[] result = sorter.getArray();
+                StringBuilder sb = new StringBuilder();
+                for (int num : result) sb.append(num).append(" ");
+                System.out.println(sb.toString().trim());
+            }
         });
     }
 
@@ -29,6 +35,20 @@ public class SortExecutor {
     public void addMergeSort(String type, boolean printSortedArray) {
         tasks.add(() -> {
             MergeSort sorter = new MergeSort(copyArray());
+            sorter.sort(type);
+            System.out.println(sorter.getReport());
+            if (printSortedArray) {
+                int[] result = sorter.getArray();
+                StringBuilder sb = new StringBuilder();
+                for (int num : result) sb.append(num).append(" ");
+                System.out.println(sb.toString().trim());
+            }
+        });
+    }
+
+    public void addAdvancedSort(String type, boolean printSortedArray) {
+        tasks.add(() -> {
+            AdvancedSort sorter = new AdvancedSort(copyArray());
             sorter.sort(type);
             System.out.println(sorter.getReport());
             if (printSortedArray) {

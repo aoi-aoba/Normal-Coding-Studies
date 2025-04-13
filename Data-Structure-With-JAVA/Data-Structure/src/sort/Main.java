@@ -2,7 +2,7 @@ package sort;
 
 public class Main {
     static final int NUM_SCALE = 10000;
-    static final int SIZE = 10000000;
+    static final int SIZE = 1000000;
 
     public static void prepare(int[] arr) {
         for (int i = 0; i < arr.length; i++)
@@ -28,7 +28,9 @@ public class Main {
 
         executor.addAdvancedSort("Quick", false);
         executor.addAdvancedSort("Heap", false);
-
+        executor.addAdvancedSort("Shell (with Knuth Sequence)", false);
+        executor.addAdvancedSort("Shell (with Tokuda Sequence)", false);
+        executor.addAdvancedSort("Shell (with Ciura Sequence)", false);
         executor.runAll();
     }
 }

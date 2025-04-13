@@ -30,6 +30,9 @@ public class AdvancedSort {
         switch (type) {
             case "Quick" -> quickSort();
             case "Heap" -> heapSort();
+            case "Shell (with Knuth Sequence)" -> shellKnuthSort();
+            case "Shell (with Tokuda Sequence)" -> shellTokudaSort();
+            case "Shell (with Ciura Sequence)" -> shellCiuraSort();
         }
 
         long endTime = System.currentTimeMillis();
@@ -102,6 +105,52 @@ public class AdvancedSort {
                 swap(i, child);
                 percolateDown(child, n);
             }
+        }
+    }
+
+    private final int[] KnuthSeq = new int[]{1, 4, 13, 40, 121, 364, 1093, 3280, 9841, 29524, 88573, 265720, 797161, 2391484, 7174453, 21523360, 64570081, 193710244};
+    private final int[] TokudaSeq = new int[]{1, 4, 9, 20, 46, 103, 233, 525, 1182, 2660, 5985, 13463, 30240, 67907, 152851, 344826, 778103, 1758946, 3972615, 8978386, 20288288, 45848726, 103636191, 234991147, 532230530};
+    private final int[] CiuraSeq = new int[]{1, 4, 10, 23, 57, 132, 301, 701, 1750, 3937, 8858, 19930, 44842, 100894, 227011, 510774, 1149241, 2585791, 5818029, 13090565, 29453771, 66270984, 149110714, 335498106, 754870738};
+
+    private void shellKnuthSort() {
+        int index = 0, len = (int)(Array.length / 3); // N/3을 넘지 않는 범위에서 적용이 전제
+        while (KnuthSeq[index] < len) index++;
+
+        for(int i = index; i >= 0; i--)
+            for(int j = 0; j < KnuthSeq[i]; j++)
+                stepInsertionSort(Array, j, Array.length, KnuthSeq[i]);
+    }
+
+    private void shellTokudaSort() {
+        int index = 0, len = (int)(Array.length / 2.25); // 적어도 2개씩은 비교가 가능하게 전제
+        while (TokudaSeq[index] < len) index++;
+
+        for(int i = index; i >= 0; i--)
+            for(int j = 0; j < TokudaSeq[i]; j++)
+                stepInsertionSort(Array, j, Array.length, TokudaSeq[i]);
+    }
+
+    private void shellCiuraSort() {
+        int index = 0, len = (int)(Array.length / 2.25); // 적어도 2개씩은 비교가 가능하게 전제
+        while (CiuraSeq[index] < len) index++;
+
+        for(int i = index; i >= 0; i--)
+            for(int j = 0; j < CiuraSeq[i]; j++)
+                stepInsertionSort(Array, j, Array.length, CiuraSeq[i]);
+    }
+
+    // @param a (배열), @param start (부분 배열의 첫 번째 원소 인덱스), @param size 배열 전체크기, @param gap 현재 gap
+    private void stepInsertionSort(int[] a, int start, int size, int gap) {
+        // 부분 배열의 두 번째 원소부터 size 까지 반복 (gap 값씩 건너뜀)
+        for (int i = start + gap; i < size; i += gap) {
+            int target = Array[i], j = i - gap;
+            // 타겟 원소가 이전 원소보다 작을 때까지 반복
+            while (j >= start && target < Array[j]) {
+                Array[j + gap] = Array[j]; // 이전 원소를 뒤로 우시프트
+                j -= gap;
+            } // 반복문을 escape하는 경우 앞의 원소가 타겟보다 작다는 것이므로 타겟 원소는 j번째 원소 뒤에 와야 함
+            // 즉, 타겟은 j + gap에 위치해야 함
+            Array[j + gap] = target;
         }
     }
 }

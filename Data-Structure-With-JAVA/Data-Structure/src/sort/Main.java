@@ -1,8 +1,8 @@
 package sort;
 
 public class Main {
-    static final int NUM_SCALE = 10000;
-    static final int SIZE = 1000000;
+    static final int NUM_SCALE = 10000000;
+    static final int SIZE = 10000000;
 
     public static void prepare(int[] arr) {
         for (int i = 0; i < arr.length; i++)
@@ -15,10 +15,12 @@ public class Main {
 
         SortExecutor executor = new SortExecutor(baseTestCaseArray);
 
-
-//        executor.addGeneralSort("Selection", false);
-//        executor.addGeneralSort("Bubble", false);
-//        executor.addGeneralSort("Insertion", false);
+        /*
+         executor.addGeneralSort("Selection", false);
+         executor.addGeneralSort("Bubble", false);
+         executor.addGeneralSort("Insertion", false);
+         일반적으로 선택 정렬, 버블 정렬, 삽입 정렬은 사용 시 시간과 공간 복잡도에서 매우 불리하므로 주석 처리
+        */
 
         executor.addMergeSort("Default", false);
         executor.addMergeSort("Bottom-Up", false);
@@ -31,6 +33,12 @@ public class Main {
         executor.addAdvancedSort("Shell (with Knuth Sequence)", false);
         executor.addAdvancedSort("Shell (with Tokuda Sequence)", false);
         executor.addAdvancedSort("Shell (with Ciura Sequence)", false);
+
+        executor.addLinearSort("Counting", false, NUM_SCALE);
+        executor.addLinearSort("No-Sum Counting", false, NUM_SCALE);
+        executor.addLinearSort("Radix", false);
+        // executor.addLinearSort("Bucket", false);
+
         executor.runAll();
     }
 }

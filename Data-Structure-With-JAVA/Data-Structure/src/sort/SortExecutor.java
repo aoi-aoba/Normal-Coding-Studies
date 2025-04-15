@@ -60,6 +60,34 @@ public class SortExecutor {
         });
     }
 
+    public void addLinearSort(String type, boolean printSortedArray) {
+        tasks.add(() -> {
+            LinearSort sorter = new LinearSort(copyArray());
+            sorter.sort(type, null);
+            System.out.println(sorter.getReport());
+            if (printSortedArray) {
+                int[] result = sorter.getArray();
+                StringBuilder sb = new StringBuilder();
+                for (int num : result) sb.append(num).append(" ");
+                System.out.println(sb.toString().trim());
+            }
+        });
+    }
+
+    public void addLinearSort(String type, boolean printSortedArray, int num_scale) {
+        tasks.add(() -> {
+            LinearSort sorter = new LinearSort(copyArray());
+            sorter.sort(type, num_scale);
+            System.out.println(sorter.getReport());
+            if (printSortedArray) {
+                int[] result = sorter.getArray();
+                StringBuilder sb = new StringBuilder();
+                for (int num : result) sb.append(num).append(" ");
+                System.out.println(sb.toString().trim());
+            }
+        });
+    }
+
     public void runAll() {
         for (Runnable task : tasks) task.run();
     }

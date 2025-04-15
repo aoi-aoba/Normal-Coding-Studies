@@ -1,9 +1,13 @@
 package sort;
 
+import javax.lang.model.type.ArrayType;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class LinearSort {
     int[] Array;
+    float[] floatArray;
     StringBuilder report;
 
     public LinearSort(int[] Target) {
@@ -104,11 +108,62 @@ public class LinearSort {
         }
     }
 
-    private void bucketSort() {
-
+    public void bucketSort() {
+        // A[0...]: 음이 아닌 정수 범위에서 균등 분포 배열
+        intLinkedList B[];
+        int numLists = Array.length;
+        B = new intLinkedList[numLists];
+        for(int i = 0; i < numLists; i++)
+            B[i] = new intLinkedList();
+        int max;
+        if(Array[0] < Array[1]) max = 1;
+        else max = 0;
+        for(int i = 2; i < Array.length; i++)
+            if(Array[max] < Array[i]) max = i;
+        int band = Array[max] + 1;
+        int bucketId;
+        for(int i = 0; i < Array.length; i++) {
+            bucketId = (int)((float)(Array[i]/band)*numLists);
+            B[bucketId].add(0, Array[i]);
+        }
+        int finger = 0, p, r = -1;
+        for(int i = 0; i < numLists; i++) {
+            for(int j = 0; j < B[i].len(); j++)
+                Array[finger++] = B[i].getNode(j).item;
+            p = r + 1; r = finger - 1;
+            rangeInsertionSort(p, r);
+        }
     }
 
     private void rangeInsertionSort(int p, int r) {
+        for(int i = p+1; i <= r; i++) {
+            int loc = i-1;
+            int x = Array[i];
+            while (loc >= p && x < Array[loc]) {
+                Array[loc+1] = Array[loc];
+                loc--;
+            }
+            Array[loc+1] = x;
+        }
+    }
 
+    public void FloatBucketSort() {
+        int n = floatArray.length;
+        if (n <= 1) return;
+
+        ArrayList<Float>[] buckets = new ArrayList[n];
+        for (int i = 0; i < n; i++) buckets[i] = new ArrayList<>();
+
+        for (float num : floatArray) {
+            int bucketIndex = (int) (num * n);
+            buckets[bucketIndex].add(num);
+        }
+
+        for (ArrayList<Float> bucket : buckets) Collections.sort(bucket);
+
+        int index = 0;
+        for (ArrayList<Float> bucket : buckets)
+            for (float num : bucket)
+                floatArray[index++] = num;
     }
 }

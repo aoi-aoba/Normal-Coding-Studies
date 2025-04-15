@@ -1,8 +1,8 @@
 package sort;
 
 public class Main {
-    static final int NUM_SCALE = 10000000;
-    static final int SIZE = 10000000;
+    static final int NUM_SCALE = 100;
+    static final int SIZE = 100;
 
     public static void prepare(int[] arr) {
         for (int i = 0; i < arr.length; i++)
@@ -37,8 +37,8 @@ public class Main {
         executor.addLinearSort("Counting", false, NUM_SCALE);
         executor.addLinearSort("No-Sum Counting", false, NUM_SCALE);
         executor.addLinearSort("Radix", false);
-        // executor.addLinearSort("Bucket", false);
-
+        // executor.addLinearSort("Bucket", false);     기본적으로 소모하는 시간이 매우 길기 때문에 주석 처리
+        // float 형태의 bucket sort는 별도로 구현하지 않음
         executor.runAll();
     }
 }

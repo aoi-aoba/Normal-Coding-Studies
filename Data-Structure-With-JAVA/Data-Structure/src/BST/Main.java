@@ -19,5 +19,13 @@ public class Main {
         bst.delete(del1);
         Integer del2 = 20;
         bst.delete(del2);
+
+        AVLTree avl = new AVLTree();
+        avl.insert(10);
+        avl.insert(20);
+        avl.insert(5);
+        avl.insert(80);
+        avl.insert(90);
+        avl.delete(80);
     }
 }
